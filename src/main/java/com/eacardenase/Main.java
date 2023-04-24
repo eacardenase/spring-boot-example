@@ -5,10 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication // replaces the following annotations
-//@ComponentScan(basePackages = "com.eacardenase")
-//@EnableAutoConfiguration
-//@Configuration
+@SpringBootApplication
 @RestController
 public class Main {
     public static void main(String[] args) {
@@ -16,7 +13,10 @@ public class Main {
     }
 
     @GetMapping("/greet")
-    public String greet() {
-        return "Hello from Spring Boot";
+    public GreetResponse greet() {
+        return new GreetResponse("Hello from Spring Boot");
+    }
+
+    record GreetResponse(String greet) {
     }
 }
